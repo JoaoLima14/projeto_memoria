@@ -1,12 +1,19 @@
 <div class="grid">
-<div 
-  class="card" 
-  *ngFor="let state of cardStates; let i = index"
-  (click)="onCardClick(i)"
-  [ngClass]="{ clicked: state() }"
->
-        
-        <div class="face front"></div>
-        <div class="face back"></div>
+  @if (loading()) {
+    <div class="loading">Carregando Pokémon...</div>
+  } @else {
+    <div 
+      class="card" 
+      *ngFor="let card of cards"
+      (click)="onCardClick(card)"
+      [ngClass]="{ clicked: card.flipped() }"
+    >
+      <div class="face front">
+        <img src="assets/images/back.png" alt="verso" style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
+      </div>
+      <div class="face back">
+        <img [src]="card.image" alt="pokemon" style="width: 100%; height: 100%; object-fit: contain; border-radius: 5px;">
+      </div>
     </div>
+  }
 </div>
