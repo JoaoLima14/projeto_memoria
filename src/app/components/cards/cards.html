@@ -1,0 +1,12 @@
+<div class="grid">
+<div 
+  class="card" 
+  *ngFor="let state of cardStates; let i = index"
+  (click)="onCardClick(i)"
+  [ngClass]="{ clicked: state() }"
+>
+        
+        <div class="face front"></div>
+        <div class="face back"></div>
+    </div>
+</div>
